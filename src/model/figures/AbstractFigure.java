@@ -51,14 +51,6 @@ public abstract class AbstractFigure implements Figure {
 		return point;
 	}
 
-	public boolean isMarked() {
-		return mark;
-	}
-
-	public void setMark(boolean mark) {
-		this.mark = mark;
-	}
-
 	private double randomVelocity(Random r) {
 		if (r.nextInt(2) > 0) {
 			return -DEFAULT_VELOCITY;
