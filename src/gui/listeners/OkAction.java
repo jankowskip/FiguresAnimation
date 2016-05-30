@@ -38,14 +38,19 @@ public class OkAction implements ActionListener {
 
 	public void actionPerformed(ActionEvent arg0) {
 		if (!error.checkSelection(listAction.getSelection())) {
+			error.ErrorFrame();
 			return;
 		}
 		if ((error.checkTextField(width.getText()) || listAction.getSelection().isSymmetrical()) && error.checkTextField(height.getText())) {
-			int figureWidth = error.checkTextField(width.getText()) ? parseInt(width.getText()) : 0;
 			int figureHeight = parseInt(height.getText());
+			int figureWidth = error.checkTextField(width.getText()) ? parseInt(width.getText()) : figureHeight;
+			
 			Figure f = figuresFactory.createFigure(listAction.getSelection(),figureWidth,figureHeight, guiFrame.getWidth(), guiFrame.getHeight());
 			figuresList.addFigure(f);
 			addFrame.dispose();
+		} else {
+			error.ErrorFrame();
+			return;
 		}
 	}
 	
