@@ -18,9 +18,12 @@ import model.FigureType;
 public class AddErrorHandle implements ActionListener {
 
 	private static final Pattern VALID_WORD = Pattern.compile("^[A-Za-z]*$");
-	private final String TEXT_ERROR = "Use numbers from 10 to 99 to determine the height and width";
+	private final String TEXT_ERROR = "Use integers from 10 to 99 to determine the height and width";
 	private final String SELECTION_ERROR = "Select a figure from the list";
+	private String errorFrameInformation;
 	private JFrame frame;
+	
+	
 
 
 	public boolean checkTextField(String check) {
@@ -31,7 +34,7 @@ public class AddErrorHandle implements ActionListener {
 		if (!VALID_WORD.matcher(check).matches()) {
 			return true;
 		} else {
-			ErrorFrame(TEXT_ERROR);
+			errorFrameInformation = TEXT_ERROR;
 			return false;
 		}
 	}
@@ -40,7 +43,7 @@ public class AddErrorHandle implements ActionListener {
 		if (2 == check.length()) {
 			return true;
 		} else {
-			ErrorFrame(TEXT_ERROR);
+			errorFrameInformation = TEXT_ERROR;
 			return false;
 		}
 	}
@@ -50,16 +53,16 @@ public class AddErrorHandle implements ActionListener {
 		if (selection != null) {
 			return true;
 		} else {
-			ErrorFrame(SELECTION_ERROR);
+			errorFrameInformation = SELECTION_ERROR;
 			return false;
 		}
 
 	}
 
-	public void ErrorFrame(String statement) {
+	public void ErrorFrame() {
 		frame = new JFrame("Error");
 		JPanel panel = new JPanel();
-		JLabel label = new JLabel(statement);
+		JLabel label = new JLabel(errorFrameInformation);
 		JButton button = new JButton("Alright, i'm sorry");
 		button.addActionListener(this);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -70,7 +73,7 @@ public class AddErrorHandle implements ActionListener {
 		panel.add(button);
 		frame.getContentPane().add(BorderLayout.CENTER, panel);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setSize(400, 100);
+		frame.setSize(600, 100);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
