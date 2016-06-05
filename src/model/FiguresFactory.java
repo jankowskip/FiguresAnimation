@@ -9,9 +9,6 @@ import model.figures.Rectangle;
 import model.figures.Square;
 
 public class FiguresFactory {
-	private int width;
-	private int height;
-
 	private List<FigureType> listOfTypes = FigureType.valuesAsList();
 	
 	public FiguresFactory(int width, int height) {
@@ -31,13 +28,7 @@ public class FiguresFactory {
 		throw new IllegalArgumentException("the figure type " + figureType + "is not recognized");
 	}
 
-//	public void setWidth(int width) {
-//		this.width = width;
-//	}
-//
-//	public void setHeight(int height) {
-//		this.height = height;
-//	}
+
 
 	public int randomX(int widthX) {
 		return randomLocation(widthX);

@@ -16,7 +16,7 @@ public abstract class AbstractFigure implements Figure {
 	private double width;
 	private double height;
 	private double mass;
-	private boolean mark;
+	
 
 	AbstractFigure(Shape shape, double width, double x, double y) {
 		this(shape, width, width, x, y);
